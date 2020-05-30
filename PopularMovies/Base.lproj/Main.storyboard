@@ -21,35 +21,44 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="QOX-z8-9Ow">
-                                    <size key="itemSize" width="381" height="242"/>
+                                    <size key="itemSize" width="198" height="310"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="15" minY="15" maxX="15" maxY="15"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movie" id="5XP-Cq-VAy" customClass="MovieCell" customModule="PopularMovies" customModuleProvider="target">
-                                        <rect key="frame" x="16.5" y="15" width="381" height="242"/>
+                                        <rect key="frame" x="108" y="15" width="198" height="310"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gH4-kN-Y4m">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="242"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="310"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UGy-O3-XVW">
-                                                    <rect key="frame" x="14" y="13" width="153" height="230"/>
+                                                    <rect key="frame" x="23" y="8" width="153" height="230"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" secondItem="UGy-O3-XVW" secondAttribute="height" multiplier="153:230" id="87P-x3-MLR"/>
                                                         <constraint firstAttribute="height" constant="230" id="a4I-cE-c29"/>
                                                         <constraint firstAttribute="width" constant="153" id="dZU-ka-g5O"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Int-CL-UQj">
+                                                    <rect key="frame" x="23" y="238" width="153" height="49"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="UGy-O3-XVW" firstAttribute="centerY" secondItem="gH4-kN-Y4m" secondAttribute="centerY" id="9x2-OU-AFj"/>
-                                                <constraint firstItem="UGy-O3-XVW" firstAttribute="leading" secondItem="gH4-kN-Y4m" secondAttribute="leading" constant="10" id="Seu-mH-m7E"/>
+                                                <constraint firstItem="UGy-O3-XVW" firstAttribute="centerX" secondItem="gH4-kN-Y4m" secondAttribute="centerX" id="5Bp-2h-ltt"/>
+                                                <constraint firstItem="UGy-O3-XVW" firstAttribute="top" secondItem="gH4-kN-Y4m" secondAttribute="top" constant="15" id="cd5-d7-VFH"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="381" height="242"/>
+                                        <size key="customSize" width="198" height="310"/>
                                         <connections>
                                             <outlet property="movieImage" destination="UGy-O3-XVW" id="NUD-r3-yWE"/>
+                                            <outlet property="title" destination="Int-CL-UQj" id="q6n-yc-swd"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -10,6 +10,7 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
+    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
@@ -17,14 +18,14 @@ class MovieCell: UICollectionViewCell {
     override func awakeFromNib() {
         setUpCellDesign()
     }
-    /*
+    
     func setUpTitle(title: String) {
         self.title.text = title
-    }*/
+        self.title.textColor = UIColor.white
+    }
     
     func setUpMovieImage(url: String?) {
-        
-        self.movieImage.layer.cornerRadius = 15
+        self.movieImage.layer.cornerRadius = 12
         
         guard let movieImageUrl = url else { return }
         guard let url = URL(string: self.apiImageUrl + movieImageUrl) else { return }
@@ -37,9 +38,9 @@ class MovieCell: UICollectionViewCell {
     }
     
     private func setUpCellDesign() {
-        self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor(named: "black")?.cgColor
-        self.layer.cornerRadius = 5
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor(named: "black")?.cgColor
+        
     }
     
 }

@@ -32,6 +32,8 @@ class MoviesVC: UIViewController {
         moviesCollectionView.delegate = self
         
         self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
+        
+        moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
         
     // MARK: - Fetch data
@@ -74,10 +76,15 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie", for: indexPath) as! MovieCell
         let movie = movies[indexPath.row]
-        //cell.setUpTitle(title: movie.title)
+        cell.setUpTitle(title: movie.title)
         cell.setUpMovieImage(url: movie.poster_path)
         return cell
     }
+    /*
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }*/
+    
     
 }
 
@@ -86,7 +93,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension MoviesVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: moviesCollectionView.frame.width - 10, height: 250)
+        return CGSize(width: (moviesCollectionView.frame.width / 2) - 10, height: 330)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
