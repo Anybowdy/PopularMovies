@@ -23,8 +23,7 @@ class MovieCell: UICollectionViewCell {
     }*/
     
     func setUpMovieImage(url: String?) {
-        //self.movieImage.clipsToBounds = true
-        //self.movieImage.layer.cornerRadius = 10
+        self.movieImage.layer.cornerRadius = 15
         
         guard let movieImageUrl = url else { return }
         guard let url = URL(string: self.apiImageUrl + movieImageUrl) else { return }
