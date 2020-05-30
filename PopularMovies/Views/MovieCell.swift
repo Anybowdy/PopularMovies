@@ -11,5 +11,13 @@ import UIKit
 class MovieCell: UICollectionViewCell {
     
     override func awakeFromNib() {
+        setUpCellDesign()
     }
+    
+    private func setUpCellDesign() {
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor(named: "black")?.cgColor
+        self.layer.cornerRadius = 5
+    }
+    
 }

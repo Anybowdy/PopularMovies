@@ -21,7 +21,7 @@ class MoviesVC: UIViewController {
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
         
-        self.navigationItem.title = "POPULAR MOVIES 🍿"
+        self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
     }
     
     // MARK: - Navigation setup
@@ -33,11 +33,15 @@ class MoviesVC: UIViewController {
 extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: moviesCollectionView.frame.width - 10, height: 200)
+        return CGSize(width: (moviesCollectionView.frame.width / 2) - 10, height: 250)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 7, left: 5, bottom: 7, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
