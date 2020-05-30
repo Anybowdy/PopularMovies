@@ -26,12 +26,15 @@ class MoviesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPopularMovies(page: pageNumber)
+        fetchPopularMovies(page: 1)
         
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
         
         self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.barTintColor =
+            UIColor(red: 255/255, green: 65/255, blue: 79/255, alpha: 1.0)
         
         moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
@@ -78,13 +81,9 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let movie = movies[indexPath.row]
         cell.setUpTitle(title: movie.title)
         cell.setUpMovieImage(url: movie.poster_path)
+        cell.setUpRate(average: movie.vote_average)
         return cell
     }
-    /*
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }*/
-    
     
 }
 

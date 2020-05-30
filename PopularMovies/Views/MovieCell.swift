@@ -12,6 +12,7 @@ class MovieCell: UICollectionViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
+    @IBOutlet weak var rateText: UILabel!
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     
@@ -24,8 +25,12 @@ class MovieCell: UICollectionViewCell {
         self.title.textColor = UIColor.white
     }
     
+    func setUpRate(average: Float) {
+        self.rateText.text = String(format: "%.1f", (average / 2))
+    }
+    
     func setUpMovieImage(url: String?) {
-        self.movieImage.layer.cornerRadius = 12
+        self.movieImage.layer.cornerRadius = 10
         
         guard let movieImageUrl = url else { return }
         guard let url = URL(string: self.apiImageUrl + movieImageUrl) else { return }
@@ -40,7 +45,7 @@ class MovieCell: UICollectionViewCell {
     private func setUpCellDesign() {
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor(named: "black")?.cgColor
-        
+        contentView.backgroundColor = UIColor.clear
     }
     
 }
