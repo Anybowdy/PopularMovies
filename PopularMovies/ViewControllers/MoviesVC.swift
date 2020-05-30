@@ -10,15 +10,19 @@ import UIKit
 
 class MoviesVC: UIViewController {
 
-    var movies = ["1", "2", "3", "4", "5", "6"]
+    var movies: [Movie] = []
+    var pageNumber = 1
     
     // MARK: - Outlets
 
     @IBOutlet weak var moviesCollectionView: UICollectionView!
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchPopularMovies(page: pageNumber)
         
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
@@ -27,6 +31,31 @@ class MoviesVC: UIViewController {
     }
     
     // MARK: - Navigation setup
+    
+    // MARK: - Fetch data
+    
+    func fetchPopularMovies(page: Int) -> () {
+        let popularMovieURL = "https://api.themoviedb.org/3/movie/popular?"
+        let apiKey = "api_key=776393d9cf2a6acb013d61f7d8964436"
+        let specifyPage = "&page="
+        let pageNumber = String(page)
+        guard let jsonUrlString = URL(string: popularMovieURL + apiKey + specifyPage + pageNumber) else { return }
+        print(jsonUrlString)
+        URLSession.shared.dataTask(with: jsonUrlString) { (data, response, error ) in
+            guard let data = data else { return }
+            do {
+                let fetchedMovies = try JSONDecoder().decode(Movies.self, from: data)
+                self.movies.append(contentsOf: fetchedMovies.results)
+                self.pageNumber += 1
+                DispatchQueue.main.async {
+                    self.moviesCollectionView.reloadData()
+                }
+            } catch let err {
+                print(err)
+            }
+        }.resume()
+        return
+    }
 
 }
 
@@ -40,6 +69,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie", for: indexPath) as! MovieCell
+        cell.title.text = movies[indexPath.row].title
         return cell
     }
     

@@ -10,6 +10,8 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
+    @IBOutlet weak var title: UILabel!
+    
     override func awakeFromNib() {
         setUpCellDesign()
     }

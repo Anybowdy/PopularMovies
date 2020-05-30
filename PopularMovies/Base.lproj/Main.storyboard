@@ -28,13 +28,28 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movie" id="5XP-Cq-VAy" customClass="MovieCell" customModule="PopularMovies" customModuleProvider="target">
-                                        <rect key="frame" x="17.5" y="15" width="379" height="242"/>
+                                        <rect key="frame" x="107" y="15" width="200" height="242"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gH4-kN-Y4m">
-                                            <rect key="frame" x="0.0" y="0.0" width="379" height="242"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="242"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2if-nL-FVT">
+                                                    <rect key="frame" x="79" y="111" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2if-nL-FVT" firstAttribute="centerX" secondItem="gH4-kN-Y4m" secondAttribute="centerX" id="HMI-vt-TMk"/>
+                                                <constraint firstItem="2if-nL-FVT" firstAttribute="centerY" secondItem="gH4-kN-Y4m" secondAttribute="centerY" id="S5a-EW-R2R"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="379" height="242"/>
+                                        <size key="customSize" width="200" height="242"/>
+                                        <connections>
+                                            <outlet property="title" destination="2if-nL-FVT" id="bJn-H7-KFO"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

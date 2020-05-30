@@ -10,11 +10,8 @@ import Foundation
 import UIKit
 
 struct Movies: Decodable {
+    let total_pages: Int
     let results: [Movie]
-    
-    static func fetchMovies() -> Movies? {
-        return nil
-    }
 }
 
 struct Movie: Decodable {
