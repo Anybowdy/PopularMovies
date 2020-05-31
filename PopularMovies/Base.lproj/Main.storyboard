@@ -119,15 +119,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Qz-FGq">
                                 <rect key="frame" x="57" y="173" width="300" height="550"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-UM-DXr">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="157"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-UM-DXr">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="HsJ-6t-P0i"/>
+                                            <constraint firstAttribute="height" constant="170" id="vcF-nW-qQ8"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="550" id="8Rr-aP-pMx"/>
+                                    <constraint firstItem="OFA-UM-DXr" firstAttribute="centerX" secondItem="5au-Qz-FGq" secondAttribute="centerX" id="Awt-cP-Neh"/>
                                     <constraint firstAttribute="width" constant="300" id="ojc-a0-LvS"/>
+                                    <constraint firstItem="OFA-UM-DXr" firstAttribute="top" secondItem="5au-Qz-FGq" secondAttribute="top" id="y6F-rv-4ww"/>
                                 </constraints>
                             </view>
                         </subviews>

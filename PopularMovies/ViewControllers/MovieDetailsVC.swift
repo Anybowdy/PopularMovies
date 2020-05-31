@@ -39,7 +39,6 @@ class MovieDetailsVC: UIViewController {
     }
     
     func setUpMovieCoverImage(url: String?) {
-
         guard let movieCoverUrl = url else { return }
         guard let url = URL(string: self.apiImageUrl + movieCoverUrl) else { return }
         do {
@@ -62,6 +61,7 @@ class MovieDetailsVC: UIViewController {
     private func setUpDetailsView() {
         detailsView.backgroundColor = .white
         detailsView.layer.cornerRadius = 12
+        self.detailsView.clipsToBounds = true
     }
     
     // MARK: - Gesture recognizer
