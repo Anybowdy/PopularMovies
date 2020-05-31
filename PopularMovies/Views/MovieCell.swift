@@ -43,8 +43,8 @@ class MovieCell: UICollectionViewCell {
     }
     
     private func setUpCellDesign() {
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor(named: "black")?.cgColor
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.borderColor = UIColor.white.cgColor
         contentView.backgroundColor = UIColor.clear
     }
     

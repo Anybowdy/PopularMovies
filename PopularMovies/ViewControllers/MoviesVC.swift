@@ -105,7 +105,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension MoviesVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (moviesCollectionView.frame.width / 2) - 10, height: 330)
+        return CGSize(width: (moviesCollectionView.frame.width / 2) - 8, height: 310)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
