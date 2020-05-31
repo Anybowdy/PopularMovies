@@ -25,18 +25,23 @@ class MoviesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpNavigationBar()
+
         fetchPopularMovies(page: 1)
         
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
         
+        moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
+    }
+    
+    // MARK: - Setup Navigation UI
+    
+    func setUpNavigationBar() {
         self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor =
             UIColor(red: 255/255, green: 65/255, blue: 79/255, alpha: 1.0)
-        
-        moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
         
     // MARK: - Fetch data
@@ -83,6 +88,13 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.setUpMovieImage(url: movie.poster_path)
         cell.setUpRate(average: movie.vote_average)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! MovieDetailsVC
+        detailsVC.modalTransitionStyle = .crossDissolve
+        detailsVC.modalPresentationStyle = .overCurrentContext
+        self.present(detailsVC, animated: true)
     }
     
 }
