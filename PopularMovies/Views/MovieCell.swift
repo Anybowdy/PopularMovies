@@ -10,11 +10,11 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
+    let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
+    
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var rateText: UILabel!
-    
-    let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     
     override func awakeFromNib() {
         setUpCellDesign()

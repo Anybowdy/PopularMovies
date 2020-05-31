@@ -94,6 +94,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! MovieDetailsVC
         detailsVC.modalTransitionStyle = .crossDissolve
         detailsVC.modalPresentationStyle = .overCurrentContext
+        detailsVC.movie = movies[indexPath.row]
         self.present(detailsVC, animated: true)
     }
     

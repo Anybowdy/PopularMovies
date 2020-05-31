@@ -11,15 +11,21 @@ import UIKit
 
 class MovieDetailsVC: UIViewController {
     
+    let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
+    var movie: Movie? = nil
+    
     // MARK: - Outlets
     
     @IBOutlet weak var blurredView: UIView!
     @IBOutlet weak var detailsView: UIView!
     
+    @IBOutlet weak var movieCover: UIImageView!
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dispatchInformation(movie: movie!)
         addBlurEffectView()
         setUpDetailsView()
         addTapGestureRecognizer()
@@ -27,6 +33,22 @@ class MovieDetailsVC: UIViewController {
     }
     
     // MARK: - UI
+    
+    func dispatchInformation(movie: Movie) {
+        setUpMovieCoverImage(url: movie.backdrop_path)
+    }
+    
+    func setUpMovieCoverImage(url: String?) {
+
+        guard let movieCoverUrl = url else { return }
+        guard let url = URL(string: self.apiImageUrl + movieCoverUrl) else { return }
+        do {
+            let movieImageData = try Data(contentsOf: url)
+            self.movieCover.image = UIImage(data: movieImageData)
+        } catch let err{
+            print(err)
+        }
+    }
     
     private func addBlurEffectView() {
         let blurEffect = UIBlurEffect(style: .regular)

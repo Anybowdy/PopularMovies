@@ -145,6 +145,7 @@
                     <connections>
                         <outlet property="blurredView" destination="KsT-J5-Fme" id="TPx-IU-uwL"/>
                         <outlet property="detailsView" destination="5au-Qz-FGq" id="i5z-7d-5q4"/>
+                        <outlet property="movieCover" destination="OFA-UM-DXr" id="B2g-yA-Krb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enP-PG-8RO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
