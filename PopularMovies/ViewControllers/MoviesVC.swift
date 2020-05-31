@@ -11,8 +11,10 @@ import UIKit
 class MoviesVC: UIViewController {
 
     // MARK: - Properties
-    
+
+    let apiKey = "api_key=776393d9cf2a6acb013d61f7d8964436"
     var movies: [Movie] = []
+    var genres: [Genre] = []
     var pageNumber = 1
     var maxPage = 0
     var isFetching: Bool = false
@@ -27,7 +29,10 @@ class MoviesVC: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
 
-        fetchPopularMovies(page: 1)
+        fetchGenre { (value) in
+            self.genres = value
+            self.fetchPopularMovies(page: 1)
+        }
         
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
@@ -46,14 +51,13 @@ class MoviesVC: UIViewController {
         
     // MARK: - Fetch data
     
-    func fetchPopularMovies(page: Int) -> () {
+    func fetchPopularMovies(page: Int) {
         self.isFetching = true
         let popularMovieURL = "https://api.themoviedb.org/3/movie/popular?"
-        let apiKey = "api_key=776393d9cf2a6acb013d61f7d8964436"
         let specifyPage = "&page="
         let pageNumber = String(page)
         guard let jsonUrlString = URL(string: popularMovieURL + apiKey + specifyPage + pageNumber) else { return }
-        URLSession.shared.dataTask(with: jsonUrlString) { (data, response, error ) in
+        URLSession.shared.dataTask(with: jsonUrlString) { (data, res, err ) in
             guard let data = data else { return }
             do {
                 let fetchedMovies = try JSONDecoder().decode(Movies.self, from: data)
@@ -70,7 +74,20 @@ class MoviesVC: UIViewController {
         }.resume()
         return
     }
-
+    
+    func fetchGenre(completion: @escaping (_ result: [Genre]) -> ()) {
+        let genreURL = "https://api.themoviedb.org/3/genre/movie/list?"
+        guard let jsonUrlString = URL(string: genreURL + apiKey) else { return }
+        URLSession.shared.dataTask(with: jsonUrlString) { (data, res, err) in
+            guard let data = data else { return }
+            do {
+                let fetchedGenres = try JSONDecoder().decode(Genres.self, from: data)
+                completion(fetchedGenres.genres)
+            } catch let err {
+                print(err)
+            }
+        }.resume()
+    }
 }
 
 // MARK: - UICollectionViewDelegate/Datasource
@@ -84,6 +101,9 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie", for: indexPath) as! MovieCell
         let movie = movies[indexPath.row]
+        let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)})
+        let movieGenreStrings = movieGenres.map({ return $0.name })
+        print(movieGenreStrings)
         cell.setUpTitle(title: movie.title)
         cell.setUpMovieImage(url: movie.poster_path)
         cell.setUpRate(average: movie.vote_average)
@@ -105,7 +125,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
 extension MoviesVC: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (moviesCollectionView.frame.width / 2) - 8, height: 310)
+        return CGSize(width: (moviesCollectionView.frame.width / 2) - 8, height: 325)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
