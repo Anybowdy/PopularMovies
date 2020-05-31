@@ -112,22 +112,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-J5-Fme">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsT-J5-Fme">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Qz-FGq">
-                                <rect key="frame" x="59" y="146" width="297" height="224"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Qz-FGq">
+                                <rect key="frame" x="57" y="173" width="300" height="550"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-UM-DXr">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="157"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="550" id="8Rr-aP-pMx"/>
+                                    <constraint firstAttribute="width" constant="300" id="ojc-a0-LvS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KsT-J5-Fme" firstAttribute="trailing" secondItem="Iz6-jd-hDJ" secondAttribute="trailing" id="5wU-v3-dQT"/>
+                            <constraint firstItem="KsT-J5-Fme" firstAttribute="top" secondItem="LMb-p3-nkH" secondAttribute="top" id="IkD-ER-rie"/>
+                            <constraint firstItem="5au-Qz-FGq" firstAttribute="centerY" secondItem="LMb-p3-nkH" secondAttribute="centerY" id="RBi-xe-RQf"/>
+                            <constraint firstAttribute="bottom" secondItem="KsT-J5-Fme" secondAttribute="bottom" id="ico-UT-9Fq"/>
+                            <constraint firstItem="KsT-J5-Fme" firstAttribute="leading" secondItem="Iz6-jd-hDJ" secondAttribute="leading" id="nHn-gi-OFZ"/>
+                            <constraint firstItem="5au-Qz-FGq" firstAttribute="centerX" secondItem="LMb-p3-nkH" secondAttribute="centerX" id="yxI-1v-FzP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Iz6-jd-hDJ"/>
                     </view>
                     <connections>
                         <outlet property="blurredView" destination="KsT-J5-Fme" id="TPx-IU-uwL"/>
+                        <outlet property="detailsView" destination="5au-Qz-FGq" id="i5z-7d-5q4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enP-PG-8RO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

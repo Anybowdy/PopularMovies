@@ -35,7 +35,7 @@ class MoviesVC: UIViewController {
         moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
     
-    // MARK: - Setup Navigation UI
+    // MARK: - UI
     
     func setUpNavigationBar() {
         self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
