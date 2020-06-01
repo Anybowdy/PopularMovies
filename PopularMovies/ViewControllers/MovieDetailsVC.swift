@@ -26,6 +26,7 @@ class MovieDetailsVC: UIViewController {
     @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var movieDescription: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var rate: UILabel!
     
     // MARK: - Life cycle
     
@@ -35,6 +36,7 @@ class MovieDetailsVC: UIViewController {
         setUpTitle()
         setUpGenre()
         setUpReleaseDate()
+        setUpRate()
         setUpDescription()
         addBlurEffectView()
         setUpDetailsView()
@@ -46,6 +48,11 @@ class MovieDetailsVC: UIViewController {
     
     func setUpTitle() {
         self.movieTitle.text = movie?.title
+    }
+    
+    func setUpRate() {
+        self.rate.text =  String(format: "%.1f", (movie!.vote_average / 2))
+        self.rate.textColor = UIColor.white
     }
     
     func setUpGenre() {
