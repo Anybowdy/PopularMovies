@@ -117,7 +117,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5au-Qz-FGq">
-                                <rect key="frame" x="57" y="173" width="300" height="550"/>
+                                <rect key="frame" x="57" y="213" width="300" height="470"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OFA-UM-DXr">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
@@ -126,10 +126,50 @@
                                             <constraint firstAttribute="height" constant="170" id="vcF-nW-qQ8"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2no-2z-CGn">
+                                        <rect key="frame" x="27" y="193" width="250" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgu-oH-jMa">
+                                        <rect key="frame" x="25" y="264" width="250" height="182"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-gS-fva">
+                                        <rect key="frame" x="256" y="230.5" width="16" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNj-Ti-Gdi">
+                                        <rect key="frame" x="272" y="231" width="18" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFQ-A3-Uul">
+                                        <rect key="frame" x="27" y="247" width="135" height="13"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ry-P0-qoY">
+                                        <rect key="frame" x="27" y="223" width="218" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="550" id="8Rr-aP-pMx"/>
+                                    <constraint firstAttribute="height" constant="470" id="8Rr-aP-pMx"/>
                                     <constraint firstItem="OFA-UM-DXr" firstAttribute="centerX" secondItem="5au-Qz-FGq" secondAttribute="centerX" id="Awt-cP-Neh"/>
                                     <constraint firstAttribute="width" constant="300" id="ojc-a0-LvS"/>
                                     <constraint firstItem="OFA-UM-DXr" firstAttribute="top" secondItem="5au-Qz-FGq" secondAttribute="top" id="y6F-rv-4ww"/>
@@ -152,7 +192,11 @@
                     <connections>
                         <outlet property="blurredView" destination="KsT-J5-Fme" id="TPx-IU-uwL"/>
                         <outlet property="detailsView" destination="5au-Qz-FGq" id="i5z-7d-5q4"/>
+                        <outlet property="genre" destination="2Ry-P0-qoY" id="NyP-3a-CAI"/>
                         <outlet property="movieCover" destination="OFA-UM-DXr" id="B2g-yA-Krb"/>
+                        <outlet property="movieDescription" destination="Qgu-oH-jMa" id="Bvh-w9-Qll"/>
+                        <outlet property="movieTitle" destination="2no-2z-CGn" id="by3-Tf-bXH"/>
+                        <outlet property="releaseDate" destination="NFQ-A3-Uul" id="8hm-PW-XxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enP-PG-8RO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

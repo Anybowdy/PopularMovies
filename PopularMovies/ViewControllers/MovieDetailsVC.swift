@@ -13,6 +13,7 @@ class MovieDetailsVC: UIViewController {
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     var movie: Movie? = nil
+    var genres: [String] = []
     
     // MARK: - Outlets
     
@@ -21,11 +22,20 @@ class MovieDetailsVC: UIViewController {
     
     @IBOutlet weak var movieCover: UIImageView!
     
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var genre: UILabel!
+    @IBOutlet weak var movieDescription: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dispatchInformation(movie: movie!)
+        setUpMovieCoverImage()
+        setUpTitle()
+        setUpGenre()
+        setUpReleaseDate()
+        setUpDescription()
         addBlurEffectView()
         setUpDetailsView()
         addTapGestureRecognizer()
@@ -34,12 +44,29 @@ class MovieDetailsVC: UIViewController {
     
     // MARK: - UI
     
-    func dispatchInformation(movie: Movie) {
-        setUpMovieCoverImage(url: movie.backdrop_path)
+    func setUpTitle() {
+        self.movieTitle.text = movie?.title
     }
     
-    func setUpMovieCoverImage(url: String?) {
-        guard let movieCoverUrl = url else { return }
+    func setUpGenre() {
+        var res = ""
+        for genre in genres {
+            res.append(genre + " ")
+        }
+        self.genre.text = res
+    }
+    
+    func setUpDescription() {
+        self.movieDescription.text = movie?.overview
+        self.movieDescription.textColor = UIColor.gray
+    }
+    
+    func setUpReleaseDate() {
+        self.releaseDate.text = movie?.release_date
+    }
+    
+    func setUpMovieCoverImage() {
+        guard let movieCoverUrl = movie?.backdrop_path else { return }
         guard let url = URL(string: self.apiImageUrl + movieCoverUrl) else { return }
         do {
             let movieImageData = try Data(contentsOf: url)

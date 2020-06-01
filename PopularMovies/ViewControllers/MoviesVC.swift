@@ -101,20 +101,22 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie", for: indexPath) as! MovieCell
         let movie = movies[indexPath.row]
-        let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)})
-        let movieGenreStrings = movieGenres.map({ return $0.name })
+        let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)}).map({ return $0.name })
         cell.setUpTitle(title: movie.title)
         cell.setUpMovieImage(url: movie.poster_path)
         cell.setUpRate(average: movie.vote_average)
-        cell.setUpGenreText(genre: movieGenreStrings[0])
+        cell.setUpGenreText(genre: movieGenres[0])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC") as! MovieDetailsVC
+        let movie = movies[indexPath.row]
+        let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)}).map({ return $0.name })
         detailsVC.modalTransitionStyle = .crossDissolve
         detailsVC.modalPresentationStyle = .overCurrentContext
-        detailsVC.movie = movies[indexPath.row]
+        detailsVC.movie = movie
+        detailsVC.genres = movieGenres
         self.present(detailsVC, animated: true)
     }
     
