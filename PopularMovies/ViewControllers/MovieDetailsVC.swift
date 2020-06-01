@@ -53,7 +53,6 @@ class MovieDetailsVC: UIViewController {
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurredView.backgroundColor = UIColor.clear
         blurredView.addSubview(blurEffectView)
     }

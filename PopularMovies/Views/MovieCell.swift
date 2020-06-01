@@ -13,6 +13,7 @@ class MovieCell: UICollectionViewCell {
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var genreText: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var rateText: UILabel!
     
@@ -23,6 +24,11 @@ class MovieCell: UICollectionViewCell {
     func setUpTitle(title: String) {
         self.title.text = title
         self.title.textColor = UIColor.white
+    }
+    
+    func setUpGenreText(genre: String) {
+        self.genreText.textColor = UIColor.white
+        self.genreText.text = genre
     }
     
     func setUpRate(average: Float) {
@@ -43,7 +49,7 @@ class MovieCell: UICollectionViewCell {
     }
     
     private func setUpCellDesign() {
-        contentView.layer.borderWidth = 0.5
+        //contentView.layer.borderWidth = 0.5
         contentView.layer.borderColor = UIColor.white.cgColor
         contentView.backgroundColor = UIColor.clear
     }

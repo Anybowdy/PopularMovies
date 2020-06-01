@@ -103,10 +103,10 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let movie = movies[indexPath.row]
         let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)})
         let movieGenreStrings = movieGenres.map({ return $0.name })
-        print(movieGenreStrings)
         cell.setUpTitle(title: movie.title)
         cell.setUpMovieImage(url: movie.poster_path)
         cell.setUpRate(average: movie.vote_average)
+        cell.setUpGenreText(genre: movieGenreStrings[0])
         return cell
     }
     
