@@ -25,14 +25,13 @@ class MovieCell: UICollectionViewCell {
         self.movie = movie
         self.genre = genre
         
-        setUpCellBackgroundColor()
+        setCellBackgroundColor()
         setUpMovieImage()
         setUpTitle()
         setUpMovieImage()
         setUpRate()
         setUpGenreText()
     }
-    
     
     private func setUpTitle() {
         self.title.text = movie.title
@@ -61,7 +60,7 @@ class MovieCell: UICollectionViewCell {
         }
     }
     
-    private func setUpCellBackgroundColor() {
+    private func setCellBackgroundColor() {
         contentView.backgroundColor = UIColor.clear
     }
     

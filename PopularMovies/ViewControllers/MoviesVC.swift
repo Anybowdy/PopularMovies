@@ -28,6 +28,7 @@ class MoviesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationBar()
+        setBackgroundColor()
 
         fetchGenre { (value) in
             self.genres = value
@@ -36,8 +37,6 @@ class MoviesVC: UIViewController {
         
         moviesCollectionView.dataSource = self
         moviesCollectionView.delegate = self
-        
-        moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
     
     // MARK: - UI
@@ -47,6 +46,10 @@ class MoviesVC: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor =
             UIColor(red: 255/255, green: 65/255, blue: 79/255, alpha: 1.0)
+    }
+    
+    func setBackgroundColor() {
+        moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
         
     // MARK: - Fetch data
