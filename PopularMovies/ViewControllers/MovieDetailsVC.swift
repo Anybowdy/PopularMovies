@@ -12,8 +12,8 @@ import UIKit
 class MovieDetailsVC: UIViewController {
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
-    var movie: Movie? = nil
-    var genres: [String] = []
+    var movie: Movie?
+    var genres: [String]?
     
     // MARK: - Outlets
     
@@ -57,7 +57,7 @@ class MovieDetailsVC: UIViewController {
     
     func setUpGenre() {
         var res = ""
-        for genre in genres {
+        for genre in genres! {
             res.append(genre + " ")
         }
         self.genre.text = res

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct Movies: Decodable {
     let total_pages: Int

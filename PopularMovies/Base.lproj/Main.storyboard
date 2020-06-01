@@ -41,25 +41,37 @@
                                                         <constraint firstAttribute="width" constant="153" id="dZU-ka-g5O"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Int-CL-UQj">
-                                                    <rect key="frame" x="22.5" y="245" width="153" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="UP3-oh-LlW">
+                                                    <rect key="frame" x="22.5" y="253" width="153" height="45"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Int-CL-UQj">
+                                                            <rect key="frame" x="0.0" y="0.0" width="153" height="25"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="25" id="K47-fD-NSI"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGU-DP-X10">
+                                                            <rect key="frame" x="0.0" y="28" width="153" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="UGU-DP-X10" firstAttribute="leading" secondItem="UP3-oh-LlW" secondAttribute="leading" id="2je-gS-ht3"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Int-CL-UQj" secondAttribute="trailing" id="fyY-TR-ITB"/>
+                                                        <constraint firstItem="Int-CL-UQj" firstAttribute="leading" secondItem="UP3-oh-LlW" secondAttribute="leading" id="pgM-gd-Msn"/>
+                                                        <constraint firstAttribute="trailing" secondItem="UGU-DP-X10" secondAttribute="trailing" id="sVw-0a-ENg"/>
+                                                    </constraints>
+                                                </stackView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wQl-fx-JTB">
                                                     <rect key="frame" x="147" y="278.5" width="25" height="13"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGU-DP-X10">
-                                                    <rect key="frame" x="22" y="282" width="104" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noN-rs-LWQ">
                                                     <rect key="frame" x="147" y="292" width="25" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,7 +84,10 @@
                                             <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="UGy-O3-XVW" firstAttribute="centerX" secondItem="gH4-kN-Y4m" secondAttribute="centerX" id="5Bp-2h-ltt"/>
+                                                <constraint firstItem="UP3-oh-LlW" firstAttribute="top" secondItem="UGy-O3-XVW" secondAttribute="bottom" constant="8" id="Xxc-3x-5nI"/>
                                                 <constraint firstItem="UGy-O3-XVW" firstAttribute="top" secondItem="gH4-kN-Y4m" secondAttribute="top" constant="15" id="cd5-d7-VFH"/>
+                                                <constraint firstItem="UP3-oh-LlW" firstAttribute="trailing" secondItem="UGy-O3-XVW" secondAttribute="trailing" id="hI5-wa-4Oz"/>
+                                                <constraint firstItem="UP3-oh-LlW" firstAttribute="leading" secondItem="UGy-O3-XVW" secondAttribute="leading" id="hvs-NC-QUl"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="198" height="325"/>

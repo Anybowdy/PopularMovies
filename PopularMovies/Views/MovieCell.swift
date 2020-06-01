@@ -10,6 +10,9 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
+    var movie: Movie!
+    var genre: String!
+    
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     
     @IBOutlet weak var title: UILabel!
@@ -17,28 +20,38 @@ class MovieCell: UICollectionViewCell {
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var rateText: UILabel!
     
-    override func awakeFromNib() {
-        setUpCellDesign()
+    
+    func setUpCellDesign(movie: Movie, genre: String) {
+        self.movie = movie
+        self.genre = genre
+        
+        setUpCellBackgroundColor()
+        setUpMovieImage()
+        setUpTitle()
+        setUpMovieImage()
+        setUpRate()
+        setUpGenreText()
     }
     
-    func setUpTitle(title: String) {
-        self.title.text = title
+    
+    private func setUpTitle() {
+        self.title.text = movie.title
         self.title.textColor = UIColor.white
     }
     
-    func setUpGenreText(genre: String) {
+    private func setUpGenreText() {
         self.genreText.textColor = UIColor.white
         self.genreText.text = genre
     }
     
-    func setUpRate(average: Float) {
-        self.rateText.text = String(format: "%.1f", (average / 2))
+    private func setUpRate() {
+        self.rateText.text = String(format: "%.1f", (movie.vote_average / 2))
     }
     
-    func setUpMovieImage(url: String?) {
+    private func setUpMovieImage() {
         self.movieImage.layer.cornerRadius = 10
         
-        guard let movieImageUrl = url else { return }
+        guard let movieImageUrl = movie.poster_path else { return }
         guard let url = URL(string: self.apiImageUrl + movieImageUrl) else { return }
         do {
             let movieImageData = try Data(contentsOf: url)
@@ -48,9 +61,7 @@ class MovieCell: UICollectionViewCell {
         }
     }
     
-    private func setUpCellDesign() {
-        //contentView.layer.borderWidth = 0.5
-        contentView.layer.borderColor = UIColor.white.cgColor
+    private func setUpCellBackgroundColor() {
         contentView.backgroundColor = UIColor.clear
     }
     

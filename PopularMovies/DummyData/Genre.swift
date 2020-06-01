@@ -16,7 +16,3 @@ struct Genre: Decodable {
     let id: Int
     let name: String
 }
-
-var genres: [String: String] = ["28": "Action",
-                                "12": "Adventure"]
-                                //"16", "35" "80" "99" "10751" "14" "36" "27" "10402" "9648" "10749" "878"
