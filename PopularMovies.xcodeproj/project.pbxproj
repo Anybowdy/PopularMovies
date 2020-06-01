@@ -45,14 +45,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C31B3E82483198B00E52E9F /* DummyData */ = {
-			isa = PBXGroup;
-			children = (
-				7C31B3E92483199A00E52E9F /* Genre.swift */,
-			);
-			path = DummyData;
-			sourceTree = "<group>";
-		};
 		7C5E42DC248275D9005DFA89 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +64,6 @@
 		7C5E42E7248275D9005DFA89 /* PopularMovies */ = {
 			isa = PBXGroup;
 			children = (
-				7C31B3E82483198B00E52E9F /* DummyData */,
 				7C5E42FE248279CA005DFA89 /* Models */,
 				7C5E42FD248279C1005DFA89 /* Views */,
 				7C5E42FC248279B8005DFA89 /* ViewControllers */,
@@ -106,6 +97,7 @@
 		7C5E42FE248279CA005DFA89 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7C31B3E92483199A00E52E9F /* Genre.swift */,
 				7C5E42FF248279F6005DFA89 /* Movie.swift */,
 			);
 			path = Models;
