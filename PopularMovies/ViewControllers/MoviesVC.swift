@@ -12,7 +12,6 @@ class MoviesVC: UIViewController {
 
     // MARK: - Properties
 
-    let apiKey = "api_key=776393d9cf2a6acb013d61f7d8964436"
     var movies: [Movie] = []
     var genres: [Genre] = []
     var pageNumber = 1
@@ -27,8 +26,7 @@ class MoviesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNavigationBar()
-        setBackgroundColor()
+        setUpUI()
 
         fetchGenre { (value) in
             self.genres = value
@@ -41,25 +39,20 @@ class MoviesVC: UIViewController {
     
     // MARK: - UI
     
-    func setUpNavigationBar() {
+    func setUpUI() {
         self.navigationItem.title = "POPULAR MOVIES 🍿🎬"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.barTintColor =
             UIColor(red: 255/255, green: 65/255, blue: 79/255, alpha: 1.0)
-    }
-    
-    func setBackgroundColor() {
+        
         moviesCollectionView.backgroundColor = UIColor(hue: 0.5889, saturation: 0.29, brightness: 0.24, alpha: 1.0)
     }
-        
+
     // MARK: - Fetch data
     
     func fetchPopularMovies(page: Int) {
         self.isFetching = true
-        let popularMovieURL = "https://api.themoviedb.org/3/movie/popular?"
-        let specifyPage = "&page="
-        let pageNumber = String(page)
-        guard let jsonUrlString = URL(string: popularMovieURL + apiKey + specifyPage + pageNumber) else { return }
+        guard let jsonUrlString = URL(string: Constants.API_POPULAR_MOVIES_URL + Constants.API_KEY + Constants.API_SPECIFY_PAGE + String(pageNumber)) else { return }
         URLSession.shared.dataTask(with: jsonUrlString) { (data, res, err ) in
             guard let data = data else { return }
             do {
@@ -79,8 +72,7 @@ class MoviesVC: UIViewController {
     }
     
     func fetchGenre(completion: @escaping (_ result: [Genre]) -> ()) {
-        let genreURL = "https://api.themoviedb.org/3/genre/movie/list?"
-        guard let jsonUrlString = URL(string: genreURL + apiKey) else { return }
+        guard let jsonUrlString = URL(string: Constants.API_GENRE_URL + Constants.API_KEY) else { return }
         URLSession.shared.dataTask(with: jsonUrlString) { (data, res, err) in
             guard let data = data else { return }
             do {
@@ -107,6 +99,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let movie = movies[indexPath.row]
         let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)}).map({ return $0.name })
         cell.movie = movie
+        cell.genre = movieGenres.count != 0 ? movieGenres[0] : ""
         return cell
     }
     
