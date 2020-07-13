@@ -106,7 +106,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie", for: indexPath) as! MovieCell
         let movie = movies[indexPath.row]
         let movieGenres = genres.filter({ return movie.genre_ids.contains($0.id)}).map({ return $0.name })
-        cell.setUpCellDesign(movie: movie, genre: movieGenres[0])
+        cell.movie = movie
         return cell
     }
     

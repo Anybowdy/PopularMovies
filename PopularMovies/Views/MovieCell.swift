@@ -10,8 +10,19 @@ import UIKit
 
 class MovieCell: UICollectionViewCell {
     
-    var movie: Movie!
-    var genre: String!
+    var movie: Movie! {
+        didSet {
+            setUpMovieImage()
+            
+            self.title.text = movie.title
+            self.rateText.text = String(format: "%.1f", (movie.vote_average / 2))
+        }
+    }
+    var genre: String! = "" {
+        didSet {
+            self.genreText.text = genre
+        }
+    }
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
     
@@ -20,35 +31,16 @@ class MovieCell: UICollectionViewCell {
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var rateText: UILabel!
     
-    
-    func setUpCellDesign(movie: Movie, genre: String) {
-        self.movie = movie
-        self.genre = genre
-        
-        setCellBackgroundColor()
-        setUpMovieImage()
-        setUpTitle()
-        setUpMovieImage()
-        setUpRate()
-        setUpGenreText()
-    }
-    
-    private func setUpTitle() {
-        self.title.text = movie.title
+    override func awakeFromNib() {
+        super.awakeFromNib()
         self.title.textColor = UIColor.white
-    }
-    
-    private func setUpGenreText() {
         self.genreText.textColor = UIColor.white
-        self.genreText.text = genre
-    }
-    
-    private func setUpRate() {
-        self.rateText.text = String(format: "%.1f", (movie.vote_average / 2))
+        self.movieImage.layer.cornerRadius = 10
+        contentView.backgroundColor = UIColor.clear
+
     }
     
     private func setUpMovieImage() {
-        self.movieImage.layer.cornerRadius = 10
         
         guard let movieImageUrl = movie.poster_path else { return }
         guard let url = URL(string: self.apiImageUrl + movieImageUrl) else { return }
@@ -58,10 +50,6 @@ class MovieCell: UICollectionViewCell {
         } catch {
             print("Image not laded")
         }
-    }
-    
-    private func setCellBackgroundColor() {
-        contentView.backgroundColor = UIColor.clear
     }
     
 }

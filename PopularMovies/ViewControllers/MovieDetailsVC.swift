@@ -12,8 +12,13 @@ import UIKit
 class MovieDetailsVC: UIViewController {
     
     let apiImageUrl = "https://image.tmdb.org/t/p/w200/"
-    var movie: Movie?
     var genres: [String]?
+    
+    var movie: Movie? {
+        didSet {
+            configure()
+        }
+    }
     
     // MARK: - Outlets
     
@@ -30,46 +35,46 @@ class MovieDetailsVC: UIViewController {
     
     // MARK: - Life cycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpMovieCoverImage()
-        setUpTitle()
-        setUpGenre()
-        setUpReleaseDate()
-        setUpRate()
-        setUpDescription()
-        addBlurEffectView()
+    override func awakeFromNib() {
+        setUpView()
         setUpDetailsView()
         addTapGestureRecognizer()
+        
         view.backgroundColor = UIColor.clear
     }
     
+    
     // MARK: - UI
     
-    func setUpTitle() {
+    func configure() {
         self.movieTitle.text = movie?.title
-    }
-    
-    func setUpRate() {
+
         self.rate.text =  String(format: "%.1f", (movie!.vote_average / 2))
         self.rate.textColor = UIColor.white
-    }
-    
-    func setUpGenre() {
-        var res = ""
-        for genre in genres! {
-            res.append(genre + " ")
+        
+        var res = "No genre"
+        if (genres != nil) {
+            for genre in genres! {
+                res.append(genre + " ")
+            }
         }
         self.genre.text = res
-    }
-    
-    func setUpDescription() {
+        
         self.movieDescription.text = movie?.overview
         self.movieDescription.textColor = UIColor.gray
+        
+        self.releaseDate.text = movie?.release_date
+        
+        setUpMovieCoverImage()
     }
     
-    func setUpReleaseDate() {
-        self.releaseDate.text = movie?.release_date
+    func setUpView() {
+        // Adding background blur effect
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurredView.backgroundColor = UIColor.clear
+        blurredView.addSubview(blurEffectView)
     }
     
     func setUpMovieCoverImage() {
@@ -81,14 +86,6 @@ class MovieDetailsVC: UIViewController {
         } catch let err{
             print(err)
         }
-    }
-    
-    private func addBlurEffectView() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurredView.backgroundColor = UIColor.clear
-        blurredView.addSubview(blurEffectView)
     }
     
     private func setUpDetailsView() {
